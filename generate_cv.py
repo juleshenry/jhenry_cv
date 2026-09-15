@@ -19,10 +19,10 @@ from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT
 OUTPUT = "Julian Henry CV.pdf"
 PAGE_W, PAGE_H = letter
 
-LEFT = 0.6 * inch
-RIGHT = 0.6 * inch
-TOP = 0.45 * inch
-BOTTOM = 0.45 * inch
+LEFT = 0.55 * inch
+RIGHT = 0.55 * inch
+TOP = 0.4 * inch
+BOTTOM = 0.4 * inch
 CONTENT_W = PAGE_W - LEFT - RIGHT
 
 # Professional blue accents
@@ -55,7 +55,7 @@ def styles():
             leading=22,
             alignment=TA_CENTER,
             textColor=ACCENT,
-            spaceAfter=3,
+            spaceAfter=2,
         ),
         "contact_line": ParagraphStyle(
             "ContactLine",
@@ -72,8 +72,8 @@ def styles():
             leading=12,
             alignment=TA_CENTER,
             textColor=ACCENT,
-            spaceBefore=10,
-            spaceAfter=1,
+            spaceBefore=5,
+            spaceAfter=0.5,
         ),
         "role": ParagraphStyle(
             "Role",
@@ -96,27 +96,27 @@ def styles():
             fontSize=9,
             leading=11,
             alignment=TA_LEFT,
-            spaceAfter=1.5,
+            spaceAfter=1,
         ),
         "bullet": ParagraphStyle(
             "Bullet",
             fontName="Times-Roman",
             fontSize=9,
-            leading=11.4,
+            leading=10.8,
             alignment=TA_LEFT,
             leftIndent=10,
             firstLineIndent=-8,
-            spaceBefore=1,
-            spaceAfter=1,
+            spaceBefore=0.5,
+            spaceAfter=0.5,
         ),
         "skill": ParagraphStyle(
             "Skill",
             fontName="Times-Roman",
             fontSize=9,
-            leading=11.4,
+            leading=10.8,
             alignment=TA_LEFT,
-            spaceBefore=1,
-            spaceAfter=1,
+            spaceBefore=0.5,
+            spaceAfter=0.5,
         ),
         "edu": ParagraphStyle(
             "Edu",
@@ -155,7 +155,7 @@ def section_rule():
         thickness=0.9,
         color=RULE,
         spaceBefore=0,
-        spaceAfter=5,
+        spaceAfter=2.5,
     )
 
 
@@ -178,7 +178,7 @@ def job_block(s, role, org, location, dates, employment, items):
     org_line = Paragraph(f"{org} — {location} · {employment}", s["org"])
     require_clean_bullets(s, items)
     body = [top, org_line] + [bullet(s, item) for item in items]
-    body.append(Spacer(1, 7))
+    body.append(Spacer(1, 2.5))
     return KeepTogether(body)
 
 
@@ -220,14 +220,14 @@ def build():
             s["contact_line"],
         )
     )
-    story.append(Spacer(1, 6))
+    story.append(Spacer(1, 2))
     story.append(
         HRFlowable(
             width="100%",
             thickness=1.35,
             color=ACCENT,
             spaceBefore=0,
-            spaceAfter=2,
+            spaceAfter=1.5,
         )
     )
     story.append(
@@ -236,7 +236,7 @@ def build():
             thickness=0.4,
             color=RULE_SOFT,
             spaceBefore=0,
-            spaceAfter=4,
+            spaceAfter=2,
         )
     )
 
@@ -253,10 +253,10 @@ def build():
             "October 2024 – Present",
             "Full-time",
             [
-                "Deploy Java servlet services for high-priority trading paths across London, São Paulo, and Sydney.",
-                "Port as-dealt deal logic from C++ to Python for ASIC regulatory reporting and trade exposition.",
-                "Co-author a library adding risk and workflow controls to trades across 100+ financial products.",
-                "Ship C++17 enhancements in a 1M+ line trading platform for low-latency, high-availability markets workflows.",
+                "Deploy and operate Java servlet services powering high-priority trading workflows<br/>across globally distributed infrastructure in London, São Paulo, and Sydney.",
+                "Translate as-dealt deal logic from C++ to Python for ASIC regulatory reporting,<br/>enabling auditable trade exposition and compliance-ready deal state.",
+                "Co-author a shared library that adds standardized risk and workflow controls<br/>to trades across 100+ commodities and financial products.",
+                "Deliver C++17 enhancements inside a 1M+ line enterprise trading platform,<br/>hardening low-latency, high-availability commodities and markets systems.",
             ],
         )
     )
@@ -270,9 +270,9 @@ def build():
             "May 2023 – October 2024",
             "Full-time",
             [
-                "Hardened AWS Kafka IoT telemetry for a connected agriculture fleet across 140 countries.",
-                "Built RESTful APIs for hardware device orchestration that cut integration test cycles by 500%+.",
-                "Shipped Angular features on Fendt.One precision agriculture for 10,000+ remote farm operations.",
+                "Hardened AWS Kafka-based IoT telemetry infrastructure serving a connected<br/>agriculture fleet across 140 countries with improved real-time reliability.",
+                "Engineered RESTful APIs for hardware device orchestration that accelerated<br/>integration test cycles by 500%+ across connected farm equipment.",
+                "Shipped Angular features for the Fendt.One precision agriculture platform<br/>supporting 10,000+ remote farm operations worldwide.",
             ],
         )
     )
@@ -286,9 +286,9 @@ def build():
             "August 2020 – August 2022",
             "Full-time",
             [
-                "Stress-tested ML threat-detection models via adversarial red-team simulations before production.",
-                "Built cybersecurity analytics pipelines with NLP that improved threat detection rates by 72%.",
-                "Led performance work on a 30,000+ line Python/Pandas ETL pipeline, delivering 10× throughput gains.",
+                "Evaluated ML-based threat detection models through adversarial red-team<br/>simulations, surfacing failure modes before production exposure.",
+                "Built cybersecurity analytics pipelines with NLP that improved threat<br/>detection rates by 72% across enterprise security workloads.",
+                "Led performance optimization of a 30,000+ line Python/Pandas ETL pipeline,<br/>delivering 10× throughput gains for cybersecurity data processing.",
             ],
         )
     )
@@ -302,8 +302,8 @@ def build():
             "June 2019 – May 2020",
             "Internship → part-time",
             [
-                "Validated actuarial risk models for variable annuity portfolios with NumPy, scikit-learn, and pandas.",
-                "Reached 99.7% simulation accuracy on reconciliation and stress testing for a $6B+ AUM book.",
+                "Validated actuarial risk models for variable annuity portfolios using<br/>NumPy, scikit-learn, and pandas across large-scale simulation runs.",
+                "Achieved 99.7% simulation accuracy for reconciliation and stress testing<br/>on a $6B+ AUM variable annuity book.",
             ],
         )
     )
@@ -322,46 +322,35 @@ def build():
         story.append(Paragraph(line, s["skill"]))
 
     # --- Education ---
-    story.append(Paragraph("Education", s["section"]))
+    story.append(Paragraph("Education &amp; Certificates", s["section"]))
     story.append(section_rule())
     story.append(
         Paragraph(
-            f'{accent("Bachelor’s in Applied Science")}, University of Pennsylvania',
+            f'{accent("Bachelor’s of Applied Science in Computer Science")}, University of Pennsylvania',
             s["edu"],
         )
     )
     edu_bullets = [
-        "Vice President, Artificial Intelligence Society",
-        "Undergraduate thesis on differential privacy under Rajeev Alur, published with distinction",
+        "Vice President, Artificial Intelligence Society; undergraduate thesis on differential privacy under Rajeev Alur, with distinction",
+        f'{accent("DELE B2")} (Instituto Cervantes) — official upper-intermediate Spanish language credential',
     ]
     require_clean_bullets(s, edu_bullets)
     story.extend([bullet(s, item) for item in edu_bullets])
 
-    # --- Certificates ---
-    story.append(Paragraph("Certificates", s["section"]))
-    story.append(section_rule())
-    story.append(
-        Paragraph(
-            f'{accent("DELE B2")} (Instituto Cervantes) — official upper-intermediate Spanish credential',
-            s["cert"],
-        )
-    )
-
     # --- Open Source & Portfolio ---
     story.append(Paragraph("Open Source &amp; Portfolio", s["section"]))
     story.append(section_rule())
-    story.append(Paragraph("Founder &amp; Independent Developer", s["portfolio_h"]))
     portfolio_bullets = [
-        f'{href("https://1wg.ai", "1wg.ai")} — AI global news gazette with RAG over a vector database',
-        f'{href("https://glottosphere.com", "glottosphere.com")} — 200+ language dictionary with FAISS similarity search',
-        f'{href("https://github.com/juleshenry", "GitHub")} / PyPI — '
-        f'{href("https://github.com/juleshenry/ghee", "ghee")}, '
-        f'{href("https://github.com/juleshenry/tatuagem", "tatuagem")}, '
-        f'{href("https://github.com/juleshenry/readme_rosetta", "readme-rosetta")}',
-        f'{accent("Selected builds:")} '
-        f'{href("https://github.com/juleshenry/intersekt", "intersekt")}, '
-        f'{href("https://github.com/juleshenry/quantum-plankton-ml", "quantum-plankton-ml")}, '
-        f'{href("https://github.com/juleshenry/laciyo", "laciyo")}',
+        f'{href("https://1wg.ai", "1wg.ai")} — AI-powered global news gazette using RAG over a vector database<br/>'
+        "for retrieval-augmented journalism across world events.",
+        f'{href("https://glottosphere.com", "glottosphere.com")} — multilingual dictionary spanning 200+ languages,<br/>'
+        "powered by FAISS similarity search and a custom binary lexicon engine.",
+        f'{href("https://github.com/juleshenry/ghee", "ghee")} — 616+ fuzzy-searchable shell shortcuts published to PyPI;<br/>'
+        f'{href("https://github.com/juleshenry/tatuagem", "tatuagem")} — ASCII code-signature suite; '
+        f'{href("https://github.com/juleshenry/readme_rosetta", "readme-rosetta")} — Ollama-powered README translation.',
+        f'{href("https://github.com/juleshenry/intersekt", "intersekt")} — WebAssembly Karatsuba vs JS BigInt, demonstrating O(N^1.58) vs schoolbook multiply.',
+        f'{href("https://github.com/juleshenry/quantum-plankton-ml", "quantum-plankton-ml")} — quantum machine learning on plankton imagery across architectures.',
+        f'{href("https://github.com/juleshenry/laciyo", "laciyo")} — constructed Romance language via simulated annealing (Python prep + Rust optimizer).',
     ]
     require_clean_bullets(s, portfolio_bullets)
     story.extend([bullet(s, item) for item in portfolio_bullets])
